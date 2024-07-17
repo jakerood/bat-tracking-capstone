@@ -63,5 +63,7 @@ python3 -m pip install -r requirements.txt
 ## References
 
 [Master of Science in Data Analytics - Northwest Missouri State University](https://online.nwmissouri.edu/programs/technology/master-of-science-data-analytics/)
+
 [Baseball Savant](https://baseballsavant.mlb.com/)
+
 [FanGraphs](https://www.fangraphs.com/)
