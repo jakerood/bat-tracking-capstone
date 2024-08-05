@@ -4,7 +4,11 @@
 
 This repository contains the work for my Data Analytics Capstone project for the Master of Science in Data Analytics program at Northwest Missouri State University.
 
-The importance of Major League Baseball's new bat tracking metrics is investigated using Python in this project.
+The relationship between Major League Baseball's new bat tracking metrics, specifically bat speed and swing length, with traditional batting statistics is investigated using Python in this project.
+
+## Report
+
+A complete report accompanying this repository can be found at the following link: [Overleaf Report](https://www.overleaf.com/read/vhbhtpgtbcpm#5fbfbc)
 
 ## Data
 
@@ -59,6 +63,37 @@ Make sure you can see the .venv name in your terminal prompt before running this
 ```shell
 python3 -m pip install -r requirements.txt
 ```
+
+## Data Cleaning
+
+After the virtual enviorment is ready, the [Data Cleaning Notebook](https://github.com/jakerood/bat-tracking-capstone/blob/main/data-cleaning.ipynb) is opened in JupyterLab to begin cleaning the datasets. The following is performed during the data cleaning process:
+
+* Merge the two datasets
+* Create a new feature called `HR%`
+* Remove redundant or unnecessary columns
+* Filter out players with small sample sizes (less than 170 plate appearance)
+* Save the cleaned dataset to CSV file
+
+## Exploratory Data Analysis
+
+Following the completion of data cleaning, exploratory data analysis (EDA) is performed within JupyterLab in the [EDA Notebook](https://github.com/jakerood/bat-tracking-capstone/blob/main/eda.ipynb). The following is performed during the EDA process:
+
+* Describe the numeric data
+* Generate histograms and box plots for each metric
+* Visualize the relationship between bat speed and swing length
+* Calculate correlation between bat-tracking metrics and traditional batting statistics
+* Group batters into "High Bat Speed" or "Low Bat Speed" groups and "Long Swing" or "Short Swing" groups
+* Generate violin plots comparing the swing groups for various metrics
+
+## Machine Learning Model
+
+Once exploratory data analysis is complete, machine learning is performed within JupyterLab in the [Machine Learning Notebook](https://github.com/jakerood/bat-tracking-capstone/blob/main/machine-learn.ipynb). The following is performed during the machine learning process:
+
+* Use scikit-learn to split data into 80% training, 20% test sets
+* Standardize average bat speed and swing length
+* Employ a MultiOutputRegressor with LinearRegression as the base model for six target variables (HardHit%, Barrel%, HR%, Whiff%, K%, SLG)
+* Use Matplotlib to visualize actual versus predicted results for each target variable
+* Use model to predict statistics for example players
 
 ## References
 
