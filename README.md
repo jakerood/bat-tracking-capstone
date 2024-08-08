@@ -69,9 +69,12 @@ python3 -m pip install -r requirements.txt
 After the virtual enviorment is ready, the [Data Cleaning Notebook](https://github.com/jakerood/bat-tracking-capstone/blob/main/data-cleaning.ipynb) is opened in JupyterLab to begin cleaning the datasets. The following is performed during the data cleaning process:
 
 * Merge the two datasets
+![Screenshot of Merge](screenshots/merge.png)
 * Create a new feature called `HR%`
+![Screenshot of Feature Generation](screenshots/feature-generate.png)
 * Remove redundant or unnecessary columns
 * Filter out players with small sample sizes (less than 170 plate appearance)
+![Screenshot of Filter](screenshots/filter.png)
 * Save the cleaned dataset to CSV file
 
 ## Exploratory Data Analysis
@@ -80,20 +83,60 @@ Following the completion of data cleaning, exploratory data analysis (EDA) is pe
 
 * Describe the numeric data
 * Generate histograms and box plots for each metric
+![Bat Speed Histogram](screenshots/bat-speed-histogram.png)
+![Bat Speed Box Plot](screenshots/bat-speed-box-plot.png)
 * Visualize the relationship between bat speed and swing length
+![Bat Speed vs Swing Length](screenshots/bat-speed-swing-length.png)
 * Calculate correlation between bat-tracking metrics and traditional batting statistics
+![Bat Speed Correlation](screenshots/bat-speed-correlation.png)
+![Swing Length Correlation](screenshots/swing-length-correlation.png)
 * Group batters into "High Bat Speed" or "Low Bat Speed" groups and "Long Swing" or "Short Swing" groups
+![Swing Groups](screenshots/swing-groups.png)
 * Generate violin plots comparing the swing groups for various metrics
+![Hard Hit % Violin Plot](screenshots/hard-hit-violin-plot.png)
 
 ## Machine Learning Model
 
 Once exploratory data analysis is complete, machine learning is performed within JupyterLab in the [Machine Learning Notebook](https://github.com/jakerood/bat-tracking-capstone/blob/main/machine-learn.ipynb). The following is performed during the machine learning process:
 
 * Use scikit-learn to split data into 80% training, 20% test sets
+![Screenshot of Split Data](screenshots/split-data.png)
 * Standardize average bat speed and swing length
+![Screenshot of Standardization](screenshots/standardize-features.png)
 * Employ a MultiOutputRegressor with LinearRegression as the base model for six target variables (HardHit%, Barrel%, HR%, Whiff%, K%, SLG)
+![Screenshot of Regression Model](screenshots/regression.png)
 * Use Matplotlib to visualize actual versus predicted results for each target variable
+![Actual vs Predicted Hard Hit %](screenshots/hard-hit-actual-predicted.png)
 * Use model to predict statistics for example players
+![Kepler Predictions](screenshots/kepler-stats.png)
+
+## Results
+
+The research resulted in the following key insights.
+
+### Average Bat Speed Correlation
+
+There is a strong positive correlation between average bat speed and quality of contact metrics like HardHit%, EV, and Barrel%. Average bat speed also positively correlates with HR%, Whiff% and K%.
+
+![Table of Bat Speed Correlations](screenshots/bat-speed-correlation-table.png)
+
+### Swing Length Correlation
+
+Swing length's strongest correlation is a positive correlation with Whiff%. Like average bat speed, there is also a positive correlation with Barrel%, HardHit% and HR%. There is a negative, albeit fairly weak, correlation with batting average.
+
+![Table of Swing Length Correlations](screenshots/swing-length-correlation-table.png)
+
+### Machine Learning Results
+
+The machine learning model resulted in the following equations for the six target variables (NOTE: average bat speed and swing length are standardized):
+
+![Machine Learning Equations](screenshots/model-equations.png)
+
+The following shows how the model performed in regards to each target variable:
+
+![Machine Learning Performance](screenshots/model-performance.png)
+
+HardHit% was the most predictive variable. Barrel% and HR% also demonstrated decent predictive ability.
 
 ## References
 
